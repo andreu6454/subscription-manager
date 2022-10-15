@@ -3,7 +3,7 @@ import SubsContainer from "./Components/SubsContainer";
 import UserContainer from "./Components/UserContainer";
 import {store} from "./store/store";
 import {v1} from "uuid";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Modal from "./Components/Modal";
 
 function App() {
@@ -17,12 +17,16 @@ function App() {
     const [percent, setPercent] = useState(()=>{
         return Math.floor(totalCount/store.Profit*100)
     })
+
+    useEffect(()=>{
+        setPercent(Math.floor(totalCount/store.Profit*100))
+    },[totalCount])
+
     const deleteHandler = async (id) =>{
         let count = 0
         state.forEach(el => el.id === id? count += el.price: count += 0)
         count -= totalCount
         setTotalCount(-count)
-        setPercent(Math.floor(totalCount/store.Profit*100))
         setState(state.filter(el => el.id !== id))
     }
     const addHandler = (avatar, date, name, price) =>{
@@ -30,7 +34,6 @@ function App() {
         setState([...state, newSub])
         let count = totalCount + price
         setTotalCount(count)
-        setPercent(Math.floor(totalCount/store.Profit*100))
     }
 
     return (
