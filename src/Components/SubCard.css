@@ -6,10 +6,15 @@
     height: max-content;
     width: 90%;
 }
-.sub-card img{
+.sub-card-img{
+    display: flex;
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    text-align: center;
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
 }
 .delete-button{
     width: 40px;

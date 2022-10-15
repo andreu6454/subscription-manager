@@ -22,8 +22,8 @@ const SubsContainer = (props) => {
             <div>
                 {props.state?
                     props.state.map((mappedSub) => (
-                    <SubCard key={mappedSub.id} id={mappedSub.id} avatar={mappedSub.avatar} date={mappedSub.date} name={mappedSub.name}
-                    price={mappedSub.price} deleteHandler={props.deleteHandler}/>
+                    <SubCard key={mappedSub.id} id={mappedSub.id} date={mappedSub.date} name={mappedSub.name}
+                    price={mappedSub.price} deleteHandler={props.deleteHandler} colors={props.colors}/>
                 )): <div className={"message"}>Click "add" to add new subscription</div>}
             </div>
         </div>

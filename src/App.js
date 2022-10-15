@@ -1,7 +1,7 @@
 import './App.css';
 import SubsContainer from "./Components/SubsContainer";
 import UserContainer from "./Components/UserContainer";
-import {store} from "./store/store";
+import {colors, store} from "./store/store";
 import {v1} from "uuid";
 import {useEffect, useState} from "react";
 import Modal from "./Components/Modal";
@@ -39,7 +39,7 @@ function App() {
     return (
         <div className="App">
             <Modal active={modalActive} setActive={setModalActive} addHandler={addHandler}/>
-            <SubsContainer state={state} deleteHandler={deleteHandler} addHandler={addHandler} setModalActive={setModalActive}/>
+            <SubsContainer state={state} deleteHandler={deleteHandler} addHandler={addHandler} setModalActive={setModalActive} colors={colors}/>
             <div className={"line"}/>
             <UserContainer store={store} total={totalCount? totalCount: 0} percent={percent}/>
         </div>
