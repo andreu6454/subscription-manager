@@ -5,25 +5,55 @@ const Modal = ({active, setActive,addHandler}) => {
     const [service, setService] = useState("")
     const [price, setPrice] = useState("")
     const [date, setDate] = useState("")
+    const [error,setError] = useState("")
     const onClickHandler = () =>{
-        addHandler("", date, service, Number(price))
-        setActive(false)
-        setService("")
-        setPrice("")
-        setDate("")
+        if(service !== "" && price !== "" && date !== ""){
+            addHandler("", date, service, Number(price))
+            setActive(false)
+            setService("")
+            setPrice("")
+            setDate("")
+        } else {
+            setError("You need to fill the fields")
+        }
+
     }
     const onChangeService = (e) =>{
-        setService(e.target.value)
+        if(error){
+            setError(null)
+            setService(e.target.value)
+        } else {
+            setService(e.target.value)
+        }
+
     }
     const onChangePrice = (e) =>{
-        setPrice(e.target.value)
+        if(error){
+            setError(null)
+            setPrice(e.target.value)
+        } else {
+            setPrice(e.target.value)
+        }
+
     }
     const onChangeDate = (e) =>{
-        setDate(e.target.value)
+        if(error){
+            setError(null)
+            setDate(e.target.value)
+        } else {
+            setDate(e.target.value)
+        }
+
     }
 
     return (
-        <div className={active? "modal active": "modal"} onClick={()=> setActive(false)}>
+        <div className={active? "modal active": "modal"} onClick={()=> {
+            setActive(false)
+            setError(null)
+            setService("")
+            setPrice("")
+            setDate("")
+        }}>
             <div className={active? "modal-content active": "modal-content"} onClick={(e)=> e.stopPropagation()}>
                 <div className={"modal-title"}>Please enter the service, price and date you paid for the subscription</div>
                 <div className={"input-container"}>
@@ -40,7 +70,10 @@ const Modal = ({active, setActive,addHandler}) => {
                         <input className={"date-input"} placeholder={"31"} value={date} onChange={onChangeDate}></input>
                     </div>
                 </div>
-                <div className={"modal-button"}> <button onClick={onClickHandler}>Add Sub</button> </div>
+                <div className={error? "modal-button error": "modal-button"}>
+                    {error? error: <button onClick={onClickHandler}>Add Sub</button>}
+
+                </div>
 
             </div>
         </div>
