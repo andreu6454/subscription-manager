@@ -1,13 +1,12 @@
-import React from 'react';
+import React, {memo} from 'react';
 import "./SubCard.css"
 import "./Colors.css"
 
-const SubCard = (props) => {
-    const onClickHandler = () =>{
+const SubCard = memo((props) => {
+    const onClickHandler =() =>{
         props.deleteHandler(props.id)
     }
     const randomColor = props.colors[Math.floor(Math.random()*6)]
-    console.log(randomColor)
     return (
         <div className={"sub-card"}>
             <div className={`sub-card-img ${randomColor}`}>{props.name[0]}</div>
@@ -24,6 +23,6 @@ const SubCard = (props) => {
             <div className={"delete-button"} onClick={onClickHandler}>X</div>
         </div>
     );
-};
+});
 
 export default SubCard;

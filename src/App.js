@@ -3,10 +3,10 @@ import SubsContainer from "./Components/SubsContainer";
 import UserContainer from "./Components/UserContainer";
 import {colors, store} from "./store/store";
 import {v1} from "uuid";
-import {useEffect, useState} from "react";
+import {memo, useCallback, useEffect, useState} from "react";
 import Modal from "./Components/Modal";
 
-function App() {
+const App = memo(() => {
     const [modalActive, setModalActive] = useState(false)
     const [state, setState] = useState(store.subs)
     const [totalCount, setTotalCount] = useState(()=>{
@@ -22,19 +22,19 @@ function App() {
         setPercent(Math.floor(totalCount/store.Profit*100))
     },[totalCount])
 
-    const deleteHandler = async (id) =>{
+    const deleteHandler = useCallback((id) =>{
         let count = 0
         state.forEach(el => el.id === id? count += el.price: count += 0)
         count -= totalCount
         setTotalCount(-count)
         setState(state.filter(el => el.id !== id))
-    }
-    const addHandler = (avatar, date, name, price) =>{
+    },[state, totalCount])
+    const addHandler = useCallback((avatar, date, name, price) =>{
         let newSub = {id: v1(), avatar: avatar, date: date, name: name, price: price,}
         setState([...state, newSub])
         let count = totalCount + price
         setTotalCount(count)
-    }
+    },[state, totalCount])
 
     return (
         <div className="App">
@@ -44,6 +44,6 @@ function App() {
             <UserContainer store={store} total={totalCount? totalCount: 0} percent={percent}/>
         </div>
     );
-}
+});
 
 export default App;

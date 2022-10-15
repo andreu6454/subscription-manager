@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {memo} from 'react';
 import "./SubsContainer.css"
 import SubCard from "./SubCard";
 
-const SubsContainer = (props) => {
-    const addHandler = () =>{
+const SubsContainer = memo((props) => {
+    const addHandler =() =>{
         props.setModalActive(true)
     }
-
     return (
         <div className={"subs-container"}>
             <div className={"header"}>
@@ -28,6 +27,6 @@ const SubsContainer = (props) => {
             </div>
         </div>
     );
-};
+});
 
 export default SubsContainer;

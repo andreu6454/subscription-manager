@@ -2,9 +2,6 @@ import React from 'react';
 import "./UserContainer.css"
 
 const UserContainer = (props) => {
-
-
-
     return (
         <div className={"user-container"}>
             <div className={"user-description"}>
