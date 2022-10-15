@@ -1,0 +1,40 @@
+.subs-container{
+    width: 75%;
+    height: 90vh;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5%;
+}
+.add-button{
+    background-color: #464444;
+    color: white;
+    width: 70px;
+    height: 35px;
+    border-radius: 10px;
+}
+.title{
+    font-size: 25px;
+}
+.tags{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 5px 22%;
+    width: 58%;
+}
+.tag-name{
+    font-size: 20px;
+    width: 150px;
+    text-align: center;
+}
+.vertical-line{
+    border-top: 1px solid #CAC8C8;
+    width: 90%;
+    margin: auto;
+}
+.message{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 100px;
+}

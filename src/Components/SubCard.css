@@ -1,0 +1,45 @@
+.sub-card{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 5%;
+    align-items: center;
+    height: max-content;
+    width: 90%;
+}
+.sub-card img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.delete-button{
+    width: 40px;
+    height: 40px;
+    background-color: #464444;
+    border: 1px solid grey;
+    border-radius: 50%;
+    margin-right: 5%;
+    text-align: center;
+    padding-top: 12px;
+    color: black;
+}
+.delete-button:hover{
+    background-color: darkgrey;
+}
+.delete-button:active{
+    border: 1px solid #1E1E1E;
+    color: orange;
+    background-color: white;
+
+}
+.sub-name{
+    width: 120px;
+    text-align: center;
+}
+.sub-price{
+    width: 60px;
+    text-align: center;
+}
+.sub-date{
+    width: 60px;
+    text-align: center;
+}
