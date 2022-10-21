@@ -1,6 +1,6 @@
 ## Simple subscription manager
 
-### using 
+### Using:
 - Js
 - Css
 - React
